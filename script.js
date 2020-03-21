@@ -63,14 +63,15 @@ function generatePassword() {
     characterOptions += specialCharacters;
     regexTestValues+= specialCharacterTester;
   }
-
+  if (characterOptions === ""){
+    alert('You said no to all the options.. How am i supposed to make a password without characters??? Try again and pick stuff this time.');
+  } 
   //Builds the regex test applicable to the situation created by the user
   let regexTest = new RegExp(regexTestValues);
 
   //Loop through pool of requested characters returning a random value each iteration
 
   let passesTest = false;
-  let failCount = 0
 
   // Creates password, test if conditions are met before returning the password
   while (passesTest != true) {
@@ -82,7 +83,6 @@ function generatePassword() {
         passesTest = true;
       } else {
         passesTest = false;
-        console.log(failCount++);
       }
     }
   } return securePassword;
